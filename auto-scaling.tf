@@ -1,9 +1,9 @@
 resource "aws_autoscaling_group" "bastions-dilfuzacluster-com" {
-  name                 = "bastions.dilfuzahcluster.com"
-  launch_configuration = "${aws_launch_configuration.bastions-dilfuzahcluster-com.id}"
+  name                 = "bastions.dilfuzacluster.com"
+  launch_configuration = "${aws_launch_configuration.bastions-dilfuzacluster-com.id}"
   max_size             = "${var.bastion_max_size}"
   min_size             = "${var.bastion_min_size}"
-  vpc_zone_identifier  = ["${aws_subnet.utility-eu-west-1a-dilfuzacluster-com.id}", "${aws_subnet.utility-eu-west-1b-farrukhcluster-com.id}", "${aws_subnet.utility-eu-west-1c-farrukhcluster-com.id}"]
+  vpc_zone_identifier  = ["${aws_subnet.utility-eu-west-1a-dilfuzacluster-com.id}", "${aws_subnet.utility-eu-west-1b-dilfuzacluster-com.id}", "${aws_subnet.utility-eu-west-1c-dilfuzacluster-com.id}"]
 
   tag = {
     key                 = "KubernetesCluster"
@@ -33,15 +33,15 @@ resource "aws_autoscaling_group" "bastions-dilfuzacluster-com" {
   enabled_metrics     = ["GroupDesiredCapacity", "GroupInServiceInstances", "GroupMaxSize", "GroupMinSize", "GroupPendingInstances", "GroupStandbyInstances", "GroupTerminatingInstances", "GroupTotalInstances"]
 }
 resource "aws_autoscaling_group" "master-eu-west-1a-masters-dilfuzacluster-com" {
-  name                 = "master-eu-west-1a.masters.farrukhcluster.com"
-  launch_configuration = "${aws_launch_configuration.master-eu-west-1a-masters-dilfuzahcluster-com.id}"
+  name                 = "master-eu-west-1a.masters.dilfuzacluster.com"
+  launch_configuration = "${aws_launch_configuration.master-eu-west-1a-masters-dilfuzacluster-com.id}"
   max_size             = 1
   min_size             = 1
   vpc_zone_identifier  = ["${aws_subnet.eu-west-1a-dilfuzacluster-com.id}"]
 
   tag = {
     key                 = "KubernetesCluster"
-    value               = "dilfuzahcluster.com"
+    value               = "dilfuzacluster.com"
     propagate_at_launch = true
   }
 
@@ -104,10 +104,10 @@ resource "aws_autoscaling_group" "master-eu-west-1b-masters-dilfuzacluster-com" 
 
 resource "aws_autoscaling_group" "master-eu-west-1c-masters-dilfuzacluster-com" {
   name                 = "master-eu-west-1c.masters.dilfuzacluster.com"
-  launch_configuration = "${aws_launch_configuration.master-eu-west-1c-masters-dilfuzahcluster-com.id}"
+  launch_configuration = "${aws_launch_configuration.master-eu-west-1c-masters-dilfuzacluster-com.id}"
   max_size             = 1
   min_size             = 1
-  vpc_zone_identifier  = ["${aws_subnet.eu-west-1c-dilfuzahcluster-com.id}"]
+  vpc_zone_identifier  = ["${aws_subnet.eu-west-1c-dilfuzacluster-com.id}"]
 
   tag = {
     key                 = "KubernetesCluster"
@@ -142,7 +142,7 @@ resource "aws_autoscaling_group" "nodes-dilfuzacluster-com" {
   launch_configuration = "${aws_launch_configuration.nodes-dilfuzacluster-com.id}"
   max_size             = "${var.node_max_size}"
   min_size             = "${var.node_min_size}"
-  vpc_zone_identifier  = ["${aws_subnet.eu-west-1a-dilfuzacluster-com.id}", "${aws_subnet.eu-west-1b-farrukhcluster-com.id}", "${aws_subnet.eu-west-1c-farrukhcluster-com.id}"]
+  vpc_zone_identifier  = ["${aws_subnet.eu-west-1a-dilfuzacluster-com.id}", "${aws_subnet.eu-west-1b-dilfuzacluster-com.id}", "${aws_subnet.eu-west-1c-dilfuzacluster-com.id}"]
 
   tag = {
     key                 = "KubernetesCluster"
@@ -202,7 +202,7 @@ resource "aws_launch_configuration" "master-eu-west-1a-masters-dilfuzacluster-co
   iam_instance_profile        = "${aws_iam_instance_profile.masters-dilfuzacluster-com.id}"
   security_groups             = ["${aws_security_group.masters-dilfuzacluster-com.id}"]
   associate_public_ip_address = false
-  user_data                   = "${file("${path.module}/data/aws_launch_configuration_master-eu-west-1a.masters.farrukhcluster.com_user_data")}"
+  user_data                   = "${file("${path.module}/data/aws_launch_configuration_master-eu-west-1a.masters.dilfuzacluster.com_user_data")}"
 
   root_block_device = {
     volume_type           = "gp2"
@@ -223,9 +223,9 @@ resource "aws_launch_configuration" "master-eu-west-1b-masters-dilfuzacluster-co
   instance_type               = "t2.micro"
   key_name                    = "${aws_key_pair.kubernetes-dilfuzacluster-com-efe05490095eb2e5e18da8280e9d1d68.id}"
   iam_instance_profile        = "${aws_iam_instance_profile.masters-dilfuzacluster-com.id}"
-  security_groups             = ["${aws_security_group.masters-dilfuzahcluster-com.id}"]
+  security_groups             = ["${aws_security_group.masters-dilfuzacluster-com.id}"]
   associate_public_ip_address = false
-  user_data                   = "${file("${path.module}/data/aws_launch_configuration_master-eu-west-1b.masters.farrukhcluster.com_user_data")}"
+  user_data                   = "${file("${path.module}/data/aws_launch_configuration_master-eu-west-1b.masters.dilfuzacluster.com_user_data")}"
 
   root_block_device = {
     volume_type           = "gp2"
@@ -248,7 +248,7 @@ resource "aws_launch_configuration" "master-eu-west-1c-masters-dilfuzacluster-co
   iam_instance_profile        = "${aws_iam_instance_profile.masters-dilfuzacluster-com.id}"
   security_groups             = ["${aws_security_group.masters-dilfuzacluster-com.id}"]
   associate_public_ip_address = false
-  user_data                   = "${file("${path.module}/data/aws_launch_configuration_master-eu-west-1c.masters.farrukhcluster.com_user_data")}"
+  user_data                   = "${file("${path.module}/data/aws_launch_configuration_master-eu-west-1c.masters.dilfuzacluster.com_user_data")}"
 
   root_block_device = {
     volume_type           = "gp2"

@@ -1,4 +1,4 @@
-resource "aws_iam_instance_profile" "bastions-farrukhcluster-com" {
+resource "aws_iam_instance_profile" "bastions-dilfuzacluster-com" {
   name = "bastions.dilfuzacluster.com"
   role = "${aws_iam_role.bastions-dilfuzacluster-com.name}"
 }

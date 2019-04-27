@@ -16,12 +16,12 @@ resource "aws_vpc_dhcp_options" "dilfuzacluster-com" {
 
   tags = {
     KubernetesCluster                          = "dilfuzacluster.com"
-    Name                                       = "dilfuzahcluster.com"
+    Name                                       = "dilfuzacluster.com"
     "kubernetes.io/cluster/dilfuzahcluster.com" = "owned"
   }
 }
 
-resource "aws_vpc_dhcp_options_association" "dilfuzahcluster-com" {
+resource "aws_vpc_dhcp_options_association" "dilfuzacluster-com" {
   vpc_id          = "${aws_vpc.dilfuzacluster-com.id}"
   dhcp_options_id = "${aws_vpc_dhcp_options.fdilfuzacluster-com.id}"
 }

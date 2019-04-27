@@ -46,38 +46,38 @@ resource "aws_subnet" "utility-eu-west-1a-farrukhcluster-com" {
   availability_zone = "eu-west-1a"
 
   tags = {
-    KubernetesCluster                          = "farrukhcluster.com"
-    Name                                       = "utility-eu-west-1a.farrukhcluster.com"
+    KubernetesCluster                          = "dilfuzacluster.com"
+    Name                                       = "utility-eu-west-1a.dilfuzacluster.com"
     SubnetType                                 = "Utility"
-    "kubernetes.io/cluster/farrukhcluster.com" = "owned"
+    "kubernetes.io/cluster/dilfuzacluster.com" = "owned"
     "kubernetes.io/role/elb"                   = "1"
   }
 }
 
-resource "aws_subnet" "utility-eu-west-1b-farrukhcluster-com" {
-  vpc_id            = "${aws_vpc.farrukhcluster-com.id}"
+resource "aws_subnet" "utility-eu-west-1b-dilfuzacluster-com" {
+  vpc_id            = "${aws_vpc.dilfuzacluster-com.id}"
   cidr_block        = "172.20.4.0/22"
   availability_zone = "eu-west-1b"
 
   tags = {
-    KubernetesCluster                          = "farrukhcluster.com"
-    Name                                       = "utility-eu-west-1b.farrukhcluster.com"
+    KubernetesCluster                          = "dilfuzacluster.com"
+    Name                                       = "utility-eu-west-1b.dilfuzacluster.com"
     SubnetType                                 = "Utility"
-    "kubernetes.io/cluster/farrukhcluster.com" = "owned"
+    "kubernetes.io/cluster/dilfuzacluster.com" = "owned"
     "kubernetes.io/role/elb"                   = "1"
   }
 }
 
-resource "aws_subnet" "utility-eu-west-1c-farrukhcluster-com" {
-  vpc_id            = "${aws_vpc.farrukhcluster-com.id}"
+resource "aws_subnet" "utility-eu-west-1c-dilfuzacluster-com" {
+  vpc_id            = "${aws_vpc.dilfuzacluster-com.id}"
   cidr_block        = "172.20.8.0/22"
   availability_zone = "eu-west-1c"
 
   tags = {
-    KubernetesCluster                          = "farrukhcluster.com"
-    Name                                       = "utility-eu-west-1c.farrukhcluster.com"
+    KubernetesCluster                          = "dilfuzacluster.com"
+    Name                                       = "utility-eu-west-1c.dilfuzacluster.com"
     SubnetType                                 = "Utility"
-    "kubernetes.io/cluster/farrukhcluster.com" = "owned"
+    "kubernetes.io/cluster/dilfuzacluster.com" = "owned"
     "kubernetes.io/role/elb"                   = "1"
   }
 }

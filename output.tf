@@ -19,7 +19,7 @@ output "cluster_name" {
 }
 
 output "master_autoscaling_group_ids" {
-  value = ["${aws_autoscaling_group.master-eu-west-1a-masters-dilfuzacluster-com.id}", "${aws_autoscaling_group.master-eu-west-1b-masters-farrukhcluster-com.id}", "${aws_autoscaling_group.master-eu-west-1c-masters-farrukhcluster-com.id}"]
+  value = ["${aws_autoscaling_group.master-eu-west-1a-masters-dilfuzacluster-com.id}", "${aws_autoscaling_group.master-eu-west-1b-masters-dilfuzacluster-com.id}", "${aws_autoscaling_group.master-eu-west-1c-masters-dilfuzacluster-com.id}"]
 }
 
 output "master_security_group_ids" {

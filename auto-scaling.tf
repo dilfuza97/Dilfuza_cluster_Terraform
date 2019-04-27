@@ -3,7 +3,7 @@ resource "aws_autoscaling_group" "bastions-dilfuzacluster-com" {
   launch_configuration = "${aws_launch_configuration.bastions-dilfuzahcluster-com.id}"
   max_size             = "${var.bastion_max_size}"
   min_size             = "${var.bastion_min_size}"
-  vpc_zone_identifier  = ["${aws_subnet.utility-eu-west-1a-dilfuzacluster-com.id}", "${aws_subnet.utility-eu-west-1b-farrukhcluster-com.id}", "${aws_subnet.utility-eu-west-1c-farrukhcluster-com.id}"]
+  vpc_zone_identifier  = ["${aws_subnet.utility-eu-west-1a-dilfuzacluster-com.id}", "${aws_subnet.utility-eu-west-1b-dilfuzahcluster-com.id}", "${aws_subnet.utility-eu-west-1c-farrukhcluster-com.id}"]
 
   tag = {
     key                 = "KubernetesCluster"
@@ -33,7 +33,7 @@ resource "aws_autoscaling_group" "bastions-dilfuzacluster-com" {
   enabled_metrics     = ["GroupDesiredCapacity", "GroupInServiceInstances", "GroupMaxSize", "GroupMinSize", "GroupPendingInstances", "GroupStandbyInstances", "GroupTerminatingInstances", "GroupTotalInstances"]
 }
 resource "aws_autoscaling_group" "master-eu-west-1a-masters-dilfuzacluster-com" {
-  name                 = "master-eu-west-1a.masters.farrukhcluster.com"
+  name                 = "master-eu-west-1a.masters.dilfuzacluster.com"
   launch_configuration = "${aws_launch_configuration.master-eu-west-1a-masters-dilfuzahcluster-com.id}"
   max_size             = 1
   min_size             = 1
@@ -142,7 +142,7 @@ resource "aws_autoscaling_group" "nodes-dilfuzacluster-com" {
   launch_configuration = "${aws_launch_configuration.nodes-dilfuzacluster-com.id}"
   max_size             = "${var.node_max_size}"
   min_size             = "${var.node_min_size}"
-  vpc_zone_identifier  = ["${aws_subnet.eu-west-1a-dilfuzacluster-com.id}", "${aws_subnet.eu-west-1b-farrukhcluster-com.id}", "${aws_subnet.eu-west-1c-farrukhcluster-com.id}"]
+  vpc_zone_identifier  = ["${aws_subnet.eu-west-1a-dilfuzacluster-com.id}", "${aws_subnet.eu-west-1b-dilfuzacluster-com.id}", "${aws_subnet.eu-west-1c-dilfuzacluster-com.id}"]
 
   tag = {
     key                 = "KubernetesCluster"
@@ -202,7 +202,7 @@ resource "aws_launch_configuration" "master-eu-west-1a-masters-dilfuzacluster-co
   iam_instance_profile        = "${aws_iam_instance_profile.masters-dilfuzacluster-com.id}"
   security_groups             = ["${aws_security_group.masters-dilfuzacluster-com.id}"]
   associate_public_ip_address = false
-  user_data                   = "${file("${path.module}/data/aws_launch_configuration_master-eu-west-1a.masters.farrukhcluster.com_user_data")}"
+  user_data                   = "${file("${path.module}/data/aws_launch_configuration_master-eu-west-1a.masters.dilfuzacluster.com_user_data")}"
 
   root_block_device = {
     volume_type           = "gp2"
@@ -225,7 +225,7 @@ resource "aws_launch_configuration" "master-eu-west-1b-masters-dilfuzacluster-co
   iam_instance_profile        = "${aws_iam_instance_profile.masters-dilfuzacluster-com.id}"
   security_groups             = ["${aws_security_group.masters-dilfuzahcluster-com.id}"]
   associate_public_ip_address = false
-  user_data                   = "${file("${path.module}/data/aws_launch_configuration_master-eu-west-1b.masters.farrukhcluster.com_user_data")}"
+  user_data                   = "${file("${path.module}/data/aws_launch_configuration_master-eu-west-1b.masters.dilfuzacluster.com_user_data")}"
 
   root_block_device = {
     volume_type           = "gp2"
@@ -248,7 +248,7 @@ resource "aws_launch_configuration" "master-eu-west-1c-masters-dilfuzacluster-co
   iam_instance_profile        = "${aws_iam_instance_profile.masters-dilfuzacluster-com.id}"
   security_groups             = ["${aws_security_group.masters-dilfuzacluster-com.id}"]
   associate_public_ip_address = false
-  user_data                   = "${file("${path.module}/data/aws_launch_configuration_master-eu-west-1c.masters.farrukhcluster.com_user_data")}"
+  user_data                   = "${file("${path.module}/data/aws_launch_configuration_master-eu-west-1c.masters.dilfuzacluster.com_user_data")}"
 
   root_block_device = {
     volume_type           = "gp2"

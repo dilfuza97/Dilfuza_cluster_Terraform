@@ -1,6 +1,6 @@
 resource "aws_nat_gateway" "eu-west-1a-dilfuzacluster-com" {
   allocation_id = "${aws_eip.eu-west-1a-dilfuzacluster-com.id}"
-  subnet_id     = "${aws_subnet.utility-eu-west-1a-farrukhcluster-com.id}"
+  subnet_id     = "${aws_subnet.utility-eu-west-1a-dilfuzacluster-com.id}"
 
   tags = {
     KubernetesCluster                          = "dilfuzacluster.com"

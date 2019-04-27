@@ -26,5 +26,5 @@ resource "aws_route53_record" "bastion-dilfuzacluster-com" {
 
 resource "aws_route53_zone_association" "Z2E5ESYC4VAF9L" {
   zone_id = "/hostedzone/Z2E5ESYC4VAF9L"
-  vpc_id  = "${aws_vpc.fdilfuzacluster-com.id}"
+  vpc_id  = "${aws_vpc.dilfuzacluster-com.id}"
 }

@@ -103,7 +103,7 @@ resource "aws_autoscaling_group" "master-eu-west-1b-masters-dilfuzacluster-com" 
 }
 
 resource "aws_autoscaling_group" "master-eu-west-1c-masters-dilfuzacluster-com" {
-  name                 = "master-eu-west-1c.masters.farrukhcluster.com"
+  name                 = "master-eu-west-1c.masters.dilfuzacluster.com"
   launch_configuration = "${aws_launch_configuration.master-eu-west-1c-masters-dilfuzahcluster-com.id}"
   max_size             = 1
   min_size             = 1

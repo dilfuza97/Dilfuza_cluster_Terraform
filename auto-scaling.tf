@@ -117,7 +117,7 @@ resource "aws_autoscaling_group" "master-eu-west-1c-masters-dilfuzacluster-com" 
 
   tag = {
     key                 = "Name"
-    value               = "master-eu-west-1c.masters.farrukhcluster.com"
+    value               = "master-eu-west-1c.masters.dilfuzacluster.com"
     propagate_at_launch = true
   }
 
@@ -137,22 +137,22 @@ resource "aws_autoscaling_group" "master-eu-west-1c-masters-dilfuzacluster-com" 
   enabled_metrics     = ["GroupDesiredCapacity", "GroupInServiceInstances", "GroupMaxSize", "GroupMinSize", "GroupPendingInstances", "GroupStandbyInstances", "GroupTerminatingInstances", "GroupTotalInstances"]
 }
 
-resource "aws_autoscaling_group" "nodes-farrukhcluster-com" {
-  name                 = "nodes.farrukhcluster.com"
-  launch_configuration = "${aws_launch_configuration.nodes-farrukhcluster-com.id}"
-  max_size             = 2
-  min_size             = 2
-  vpc_zone_identifier  = ["${aws_subnet.eu-west-1a-farrukhcluster-com.id}", "${aws_subnet.eu-west-1b-farrukhcluster-com.id}", "${aws_subnet.eu-west-1c-farrukhcluster-com.id}"]
+resource "aws_autoscaling_group" "nodes-dilfuzacluster-com" {
+  name                 = "nodes.dilfuzacluster.com"
+  launch_configuration = "${aws_launch_configuration.nodes-dilfuzacluster-com.id}"
+  max_size             = "${var.node_max_size}"
+  min_size             = "${var.node_min_size}"
+  vpc_zone_identifier  = ["${aws_subnet.eu-west-1a-dilfuzacluster-com.id}", "${aws_subnet.eu-west-1b-farrukhcluster-com.id}", "${aws_subnet.eu-west-1c-farrukhcluster-com.id}"]
 
   tag = {
     key                 = "KubernetesCluster"
-    value               = "farrukhcluster.com"
+    value               = "dilfuzacluster.com"
     propagate_at_launch = true
   }
 
   tag = {
     key                 = "Name"
-    value               = "nodes.farrukhcluster.com"
+    value               = "nodes.dilfuzacluster.com"
     propagate_at_launch = true
   }
 
@@ -172,13 +172,13 @@ resource "aws_autoscaling_group" "nodes-farrukhcluster-com" {
   enabled_metrics     = ["GroupDesiredCapacity", "GroupInServiceInstances", "GroupMaxSize", "GroupMinSize", "GroupPendingInstances", "GroupStandbyInstances", "GroupTerminatingInstances", "GroupTotalInstances"]
 }
 
-resource "aws_launch_configuration" "bastions-farrukhcluster-com" {
-  name_prefix                 = "bastions.farrukhcluster.com-"
+resource "aws_launch_configuration" "bastions-dilfuzacluster-com" {
+  name_prefix                 = "bastions.dilfuzacluster.com-"
   image_id                    = "ami-01666ac8d55438d0b"
   instance_type               = "t2.micro"
-  key_name                    = "${aws_key_pair.kubernetes-farrukhcluster-com-efe05490095eb2e5e18da8280e9d1d68.id}"
-  iam_instance_profile        = "${aws_iam_instance_profile.bastions-farrukhcluster-com.id}"
-  security_groups             = ["${aws_security_group.bastion-farrukhcluster-com.id}"]
+  key_name                    = "${aws_key_pair.kubernetes-dilfuzacluster-com-efe05490095eb2e5e18da8280e9d1d68.id}"
+  iam_instance_profile        = "${aws_iam_instance_profile.bastions-dilfuzacluster-com.id}"
+  security_groups             = ["${aws_security_group.bastion-dilfuzacluster-com.id}"]
   associate_public_ip_address = true
 
   root_block_device = {
@@ -194,13 +194,13 @@ resource "aws_launch_configuration" "bastions-farrukhcluster-com" {
   enable_monitoring = false
 }
 
-resource "aws_launch_configuration" "master-eu-west-1a-masters-farrukhcluster-com" {
-  name_prefix                 = "master-eu-west-1a.masters.farrukhcluster.com-"
+resource "aws_launch_configuration" "master-eu-west-1a-masters-dilfuzacluster-com" {
+  name_prefix                 = "master-eu-west-1a.masters.dilfuzacluster.com-"
   image_id                    = "ami-01666ac8d55438d0b"
   instance_type               = "t2.micro"
-  key_name                    = "${aws_key_pair.kubernetes-farrukhcluster-com-efe05490095eb2e5e18da8280e9d1d68.id}"
-  iam_instance_profile        = "${aws_iam_instance_profile.masters-farrukhcluster-com.id}"
-  security_groups             = ["${aws_security_group.masters-farrukhcluster-com.id}"]
+  key_name                    = "${aws_key_pair.kubernetes-dilfuzacluster-com-efe05490095eb2e5e18da8280e9d1d68.id}"
+  iam_instance_profile        = "${aws_iam_instance_profile.masters-dilfuzacluster-com.id}"
+  security_groups             = ["${aws_security_group.masters-dilfuzacluster-com.id}"]
   associate_public_ip_address = false
   user_data                   = "${file("${path.module}/data/aws_launch_configuration_master-eu-west-1a.masters.farrukhcluster.com_user_data")}"
 
@@ -217,13 +217,13 @@ resource "aws_launch_configuration" "master-eu-west-1a-masters-farrukhcluster-co
   enable_monitoring = false
 }
 
-resource "aws_launch_configuration" "master-eu-west-1b-masters-farrukhcluster-com" {
-  name_prefix                 = "master-eu-west-1b.masters.farrukhcluster.com-"
+resource "aws_launch_configuration" "master-eu-west-1b-masters-dilfuzacluster-com" {
+  name_prefix                 = "master-eu-west-1b.masters.dilfuzacluster.com-"
   image_id                    = "ami-01666ac8d55438d0b"
   instance_type               = "t2.micro"
-  key_name                    = "${aws_key_pair.kubernetes-farrukhcluster-com-efe05490095eb2e5e18da8280e9d1d68.id}"
-  iam_instance_profile        = "${aws_iam_instance_profile.masters-farrukhcluster-com.id}"
-  security_groups             = ["${aws_security_group.masters-farrukhcluster-com.id}"]
+  key_name                    = "${aws_key_pair.kubernetes-dilfuzacluster-com-efe05490095eb2e5e18da8280e9d1d68.id}"
+  iam_instance_profile        = "${aws_iam_instance_profile.masters-dilfuzacluster-com.id}"
+  security_groups             = ["${aws_security_group.masters-dilfuzahcluster-com.id}"]
   associate_public_ip_address = false
   user_data                   = "${file("${path.module}/data/aws_launch_configuration_master-eu-west-1b.masters.farrukhcluster.com_user_data")}"
 
@@ -240,13 +240,13 @@ resource "aws_launch_configuration" "master-eu-west-1b-masters-farrukhcluster-co
   enable_monitoring = false
 }
 
-resource "aws_launch_configuration" "master-eu-west-1c-masters-farrukhcluster-com" {
-  name_prefix                 = "master-eu-west-1c.masters.farrukhcluster.com-"
+resource "aws_launch_configuration" "master-eu-west-1c-masters-dilfuzacluster-com" {
+  name_prefix                 = "master-eu-west-1c.masters.dilfuzacluster.com-"
   image_id                    = "ami-01666ac8d55438d0b"
   instance_type               = "t2.micro"
-  key_name                    = "${aws_key_pair.kubernetes-farrukhcluster-com-efe05490095eb2e5e18da8280e9d1d68.id}"
-  iam_instance_profile        = "${aws_iam_instance_profile.masters-farrukhcluster-com.id}"
-  security_groups             = ["${aws_security_group.masters-farrukhcluster-com.id}"]
+  key_name                    = "${aws_key_pair.kubernetes-dilfuzacluster-com-efe05490095eb2e5e18da8280e9d1d68.id}"
+  iam_instance_profile        = "${aws_iam_instance_profile.masters-dilfuzacluster-com.id}"
+  security_groups             = ["${aws_security_group.masters-dilfuzacluster-com.id}"]
   associate_public_ip_address = false
   user_data                   = "${file("${path.module}/data/aws_launch_configuration_master-eu-west-1c.masters.farrukhcluster.com_user_data")}"
 
@@ -263,15 +263,15 @@ resource "aws_launch_configuration" "master-eu-west-1c-masters-farrukhcluster-co
   enable_monitoring = false
 }
 
-resource "aws_launch_configuration" "nodes-farrukhcluster-com" {
-  name_prefix                 = "nodes.farrukhcluster.com-"
+resource "aws_launch_configuration" "nodes-dilfuzacluster-com" {
+  name_prefix                 = "nodes.dilfuzacluster.com-"
   image_id                    = "ami-01666ac8d55438d0b"
   instance_type               = "t2.micro"
-  key_name                    = "${aws_key_pair.kubernetes-farrukhcluster-com-efe05490095eb2e5e18da8280e9d1d68.id}"
-  iam_instance_profile        = "${aws_iam_instance_profile.nodes-farrukhcluster-com.id}"
-  security_groups             = ["${aws_security_group.nodes-farrukhcluster-com.id}"]
+  key_name                    = "${aws_key_pair.kubernetes-dilfuzacluster-com-efe05490095eb2e5e18da8280e9d1d68.id}"
+  iam_instance_profile        = "${aws_iam_instance_profile.nodes-dilfuzacluster-com.id}"
+  security_groups             = ["${aws_security_group.nodes-dilfuzacluster-com.id}"]
   associate_public_ip_address = false
-  user_data                   = "${file("${path.module}/data/aws_launch_configuration_nodes.farrukhcluster.com_user_data")}"
+  user_data                   = "${file("${path.module}/data/aws_launch_configuration_nodes.dilfuzacluster.com_user_data")}"
 
   root_block_device = {
     volume_type           = "gp2"
@@ -285,22 +285,22 @@ resource "aws_launch_configuration" "nodes-farrukhcluster-com" {
 
   enable_monitoring = false
 }
-resource "aws_autoscaling_attachment" "bastions-farrukhcluster-com" {
-  elb                    = "${aws_elb.bastion-farrukhcluster-com.id}"
-  autoscaling_group_name = "${aws_autoscaling_group.bastions-farrukhcluster-com.id}"
+resource "aws_autoscaling_attachment" "bastions-dilfuzacluster-com" {
+  elb                    = "${aws_elb.bastion-dilfuzacluster-com.id}"
+  autoscaling_group_name = "${aws_autoscaling_group.bastions-dilfuzacluster-com.id}"
 }
 
-resource "aws_autoscaling_attachment" "master-eu-west-1a-masters-farrukhcluster-com" {
-  elb                    = "${aws_elb.api-farrukhcluster-com.id}"
-  autoscaling_group_name = "${aws_autoscaling_group.master-eu-west-1a-masters-farrukhcluster-com.id}"
+resource "aws_autoscaling_attachment" "master-eu-west-1a-masters-dilfuzacluster-com" {
+  elb                    = "${aws_elb.api-dilfuzacluster-com.id}"
+  autoscaling_group_name = "${aws_autoscaling_group.master-eu-west-1a-masters-dilfuzacluster-com.id}"
 }
 
-resource "aws_autoscaling_attachment" "master-eu-west-1b-masters-farrukhcluster-com" {
-  elb                    = "${aws_elb.api-farrukhcluster-com.id}"
-  autoscaling_group_name = "${aws_autoscaling_group.master-eu-west-1b-masters-farrukhcluster-com.id}"
+resource "aws_autoscaling_attachment" "master-eu-west-1b-masters-dilfuzacluster-com" {
+  elb                    = "${aws_elb.api-dilfuzacluster-com.id}"
+  autoscaling_group_name = "${aws_autoscaling_group.master-eu-west-1b-masters-dilfuzacluster-com.id}"
 }
 
-resource "aws_autoscaling_attachment" "master-eu-west-1c-masters-farrukhcluster-com" {
-  elb                    = "${aws_elb.api-farrukhcluster-com.id}"
-  autoscaling_group_name = "${aws_autoscaling_group.master-eu-west-1c-masters-farrukhcluster-com.id}"
+resource "aws_autoscaling_attachment" "master-eu-west-1c-masters-dilfuzacluster-com" {
+  elb                    = "${aws_elb.api-dilfuzacluster-com.id}"
+  autoscaling_group_name = "${aws_autoscaling_group.master-eu-west-1c-masters-dilfuzacluster-com.id}"
 }

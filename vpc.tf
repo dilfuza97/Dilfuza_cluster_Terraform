@@ -23,5 +23,5 @@ resource "aws_vpc_dhcp_options" "dilfuzacluster-com" {
 
 resource "aws_vpc_dhcp_options_association" "dilfuzacluster-com" {
   vpc_id          = "${aws_vpc.dilfuzacluster-com.id}"
-  dhcp_options_id = "${aws_vpc_dhcp_options.fdilfuzacluster-com.id}"
+  dhcp_options_id = "${aws_vpc_dhcp_options.dilfuzacluster-com.id}"
 }

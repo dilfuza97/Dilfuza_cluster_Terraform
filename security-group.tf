@@ -204,8 +204,8 @@ resource "aws_security_group_rule" "node-to-master-udp-1-65535" {
 
 resource "aws_security_group_rule" "ssh-elb-to-bastion" {
   type                     = "ingress"
-  security_group_id        = "${aws_security_group.bastion-farrukhcluster-com.id}"
-  source_security_group_id = "${aws_security_group.bastion-elb-farrukhcluster-com.id}"
+  security_group_id        = "${aws_security_group.bastion-dilfuzacluster-com.id}"
+  source_security_group_id = "${aws_security_group.bastion-elb-dilfuzacluster-com.id}"
   from_port                = 22
   to_port                  = 22
   protocol                 = "tcp"
@@ -213,7 +213,7 @@ resource "aws_security_group_rule" "ssh-elb-to-bastion" {
 
 resource "aws_security_group_rule" "ssh-external-to-bastion-elb-0-0-0-0--0" {
   type              = "ingress"
-  security_group_id = "${aws_security_group.bastion-elb-farrukhcluster-com.id}"
+  security_group_id = "${aws_security_group.bastion-elb-dilfuzacluster-com.id}"
   from_port         = 22
   to_port           = 22
   protocol          = "tcp"

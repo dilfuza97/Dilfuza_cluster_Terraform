@@ -91,17 +91,17 @@ output "subnet_utility-eu-west-1a_id" {
 }
 
 output "subnet_utility-eu-west-1b_id" {
-  value = "${aws_subnet.utility-eu-west-1b-farrukhcluster-com.id}"
+  value = "${aws_subnet.utility-eu-west-1b-dilfuzacluster-com.id}"
 }
 
 output "subnet_utility-eu-west-1c_id" {
-  value = "${aws_subnet.utility-eu-west-1c-farrukhcluster-com.id}"
+  value = "${aws_subnet.utility-eu-west-1c-dilfuzacluster-com.id}"
 }
 
 output "vpc_cidr_block" {
-  value = "${aws_vpc.farrukhcluster-com.cidr_block}"
+  value = "${aws_vpc.dilfuzacluster-com.cidr_block}"
 }
 
 output "vpc_id" {
-  value = "${aws_vpc.farrukhcluster-com.id}"
+  value = "${aws_vpc.dilfuzacluster-com.id}"
 }

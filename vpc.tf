@@ -6,7 +6,7 @@ resource "aws_vpc" "dilfuzacluster-com" {
   tags = {
     KubernetesCluster                          = "dilfuzacluster.com"
     Name                                       = "dilfuzacluster.com"
-    "kubernetes.io/cluster/dilfuzahcluster.com" = "owned"
+    "kubernetes.io/cluster/dilfuzacluster.com" = "owned"
   }
 }
 
@@ -17,7 +17,7 @@ resource "aws_vpc_dhcp_options" "dilfuzacluster-com" {
   tags = {
     KubernetesCluster                          = "dilfuzacluster.com"
     Name                                       = "dilfuzacluster.com"
-    "kubernetes.io/cluster/dilfuzahcluster.com" = "owned"
+    "kubernetes.io/cluster/dilfuzacluster.com" = "owned"
   }
 }
 

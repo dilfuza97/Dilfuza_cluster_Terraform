@@ -174,8 +174,8 @@ resource "aws_autoscaling_group" "nodes-dilfuzacluster-com" {
 
 resource "aws_launch_configuration" "bastions-dilfuzacluster-com" {
   name_prefix                 = "bastions.dilfuzacluster.com-"
-  image_id                    = "ami-01666ac8d55438d0b"
-  instance_type               = "t2.micro"
+  image_id                    = "${var.image_id}"
+  instance_type               = "${var.instance_type}"
   key_name                    = "${aws_key_pair.kubernetes-dilfuzacluster-com-efe05490095eb2e5e18da8280e9d1d68.id}"
   iam_instance_profile        = "${aws_iam_instance_profile.bastions-dilfuzacluster-com.id}"
   security_groups             = ["${aws_security_group.bastion-dilfuzacluster-com.id}"]
@@ -219,8 +219,8 @@ resource "aws_launch_configuration" "master-eu-west-1a-masters-dilfuzacluster-co
 
 resource "aws_launch_configuration" "master-eu-west-1b-masters-dilfuzacluster-com" {
   name_prefix                 = "master-eu-west-1b.masters.dilfuzacluster.com-"
-  image_id                    = "ami-01666ac8d55438d0b"
-  instance_type               = "t2.micro"
+  image_id                    = "${var.image_id}"
+  instance_type               = "${var.instance_type}"
   key_name                    = "${aws_key_pair.kubernetes-dilfuzacluster-com-efe05490095eb2e5e18da8280e9d1d68.id}"
   iam_instance_profile        = "${aws_iam_instance_profile.masters-dilfuzacluster-com.id}"
   security_groups             = ["${aws_security_group.masters-dilfuzacluster-com.id}"]
@@ -242,8 +242,8 @@ resource "aws_launch_configuration" "master-eu-west-1b-masters-dilfuzacluster-co
 
 resource "aws_launch_configuration" "master-eu-west-1c-masters-dilfuzacluster-com" {
   name_prefix                 = "master-eu-west-1c.masters.dilfuzacluster.com-"
-  image_id                    = "ami-01666ac8d55438d0b"
-  instance_type               = "t2.micro"
+  image_id                    = "${var.image_id}"
+  instance_type               = "${var.instance_type}"
   key_name                    = "${aws_key_pair.kubernetes-dilfuzacluster-com-efe05490095eb2e5e18da8280e9d1d68.id}"
   iam_instance_profile        = "${aws_iam_instance_profile.masters-dilfuzacluster-com.id}"
   security_groups             = ["${aws_security_group.masters-dilfuzacluster-com.id}"]
@@ -265,8 +265,8 @@ resource "aws_launch_configuration" "master-eu-west-1c-masters-dilfuzacluster-co
 
 resource "aws_launch_configuration" "nodes-dilfuzacluster-com" {
   name_prefix                 = "nodes.dilfuzacluster.com-"
-  image_id                    = "ami-01666ac8d55438d0b"
-  instance_type               = "t2.micro"
+  image_id                    = "${var.image_id}"
+  instance_type               ="${var.instance_type}"
   key_name                    = "${aws_key_pair.kubernetes-dilfuzacluster-com-efe05490095eb2e5e18da8280e9d1d68.id}"
   iam_instance_profile        = "${aws_iam_instance_profile.nodes-dilfuzacluster-com.id}"
   security_groups             = ["${aws_security_group.nodes-dilfuzacluster-com.id}"]

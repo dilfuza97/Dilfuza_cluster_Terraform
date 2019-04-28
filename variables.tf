@@ -10,7 +10,7 @@ variable "master_instance_type" {}
 variable "image_id" {}
 variable "aws_region" {}
 variable "bastion_instance_type" {}
-variable "instance_type" {}
+
   
 
 

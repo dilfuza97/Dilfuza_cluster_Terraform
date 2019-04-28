@@ -34,7 +34,7 @@ CREATE SSH KEY OTHERWISE IT FAILS
 
 Kops create cluster --help (Follow the instructions)
 
-kops create cluster --name=devnovemberterraform.com --node-size="t2.micro" --master-size="t2.micro" --master-zones="eu-west-1b,eu-west-1a,eu-west-1c" --networking="weave" --topology="private" --bastion="true" --dns="private" --zones="eu-west-1b,eu-west-1a,eu-west-1c" --state="s3://devnovemberterraform.com" --out=. --target=terraform --yes
+kops create cluster --name=qa-dilfuzacluster.com --node-size="t2.micro" --master-size="t2.micro" --master-zones="eu-west-1b,eu-west-1a,eu-west-1c" --networking="weave" --topology="private" --bastion="true" --dns="private" --zones="eu-west-1b,eu-west-1a,eu-west-1c" --state="s3://qa-dilfuzacluster.com" --out=. --target=terraform --yes
 After it is created kops validate cluster
 
 It should show the API server Once you have it run kubectl config view
